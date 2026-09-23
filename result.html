@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Student Result</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+
+        body {
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+
+        /* NAVBAR */
+
+        nav {
+            background: #1e3a8a;
+            color: white;
+            padding: 18px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        nav h1 {
+            font-size: 24px;
+        }
+
+
+        nav span {
+            font-size: 14px;
+        }
+
+
+        /* CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+
+        /* TITLE */
+
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+
+        .title h2 {
+            color: #1e3a8a;
+            margin-bottom: 8px;
+        }
+
+
+        .title p {
+            color: #6b7280;
+        }
+
+
+        /* CARD */
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+
+            margin-bottom: 25px;
+        }
+
+
+        /* RESULT HEADER */
+
+        .result-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+
+        .result-header h3 {
+            color: #1e3a8a;
+        }
+
+
+        /* STATUS */
+
+        .status {
+            padding: 8px 18px;
+
+            border-radius: 20px;
+
+            font-weight: bold;
+
+            background: #dcfce7;
+
+            color: #166534;
+        }
+
+
+        .status.fail {
+
+            background: #fee2e2;
+
+            color: #991b1b;
+        }
+
+
+        /* STUDENT DETAILS */
+
+        .student-details {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .detail-box {
+
+            background: #f8fafc;
+
+            padding: 18px;
+
+            border-radius: 8px;
+
+            border-left:
+                4px solid #1e3a8a;
+        }
+
+
+        .detail-box small {
+            color: #6b7280;
+        }
+
+
+        .detail-box strong {
+
+            display: block;
+
+            margin-top: 6px;
+
+            color: #111827;
+        }
+
+
+        /* TABLE */
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 10px;
+        }
+
+
+        th,
+        td {
+
+            padding: 14px;
+
+            text-align: center;
+
+            border-bottom:
+                1px solid #e5e7eb;
+        }
+
+
+        th {
+
+            background: #1e3a8a;
+
+            color: white;
+        }
+
+
+        .pass {
+
+            color: #15803d;
+
+            font-weight: bold;
+        }
+
+
+        .fail-text {
+
+            color: #dc2626;
+
+            font-weight: bold;
+        }
+
+
+        /* SUMMARY */
+
+        .summary {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            background: #eff6ff;
+
+            padding: 20px;
+
+            margin-top: 20px;
+
+            border-radius: 8px;
+        }
+
+
+        .summary div {
+
+            text-align: center;
+        }
+
+
+        .summary h4 {
+
+            color: #6b7280;
+
+            margin-bottom: 6px;
+        }
+
+
+        .summary p {
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            color: #1e3a8a;
+        }
+
+
+        /* BUTTON */
+
+        .button-container {
+
+            text-align: center;
+
+            margin-top: 25px;
+        }
+
+
+        button {
+
+            background: #1e3a8a;
+
+            color: white;
+
+            border: none;
+
+            padding: 13px 30px;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            cursor: pointer;
+        }
+
+
+        button:hover {
+
+            background: #162d6b;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+
+            text-align: center;
+
+            background: #1e3a8a;
+
+            color: white;
+
+            padding: 18px;
+
+            margin-top: 50px;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 768px) {
+
+            nav {
+
+                flex-direction: column;
+
+                gap: 6px;
+
+                text-align: center;
+            }
+
+
+            .student-details {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .summary {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .result-header {
+
+                flex-direction: column;
+
+                gap: 12px;
+            }
+
+
+            table {
+
+                font-size: 13px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .container {
+
+                width: 94%;
+            }
+
+
+            .card {
+
+                padding: 18px;
+            }
+
+
+            th,
+            td {
+
+                padding: 9px 5px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <h1>
+            Student Portal
+        </h1>
+
+        <span>
+            Student Registration & Result Management
+        </span>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+
+        <div class="title">
+
+            <h2>
+                Student Result
+            </h2>
+
+            <p>
+                Examination Result Details
+            </p>
+
+        </div>
+
+
+        <!-- RESULT CARD -->
+
+        <section class="card">
+
+
+            <div class="result-header">
+
+                <h3>
+                    Result Details
+                </h3>
+
+                <span
+                    class="status"
+                    id="resultStatus"
+                >
+                    PASS
+                </span>
+
+            </div>
+
+
+            <!-- STUDENT INFORMATION -->
+
+            <div class="student-details">
+
+
+                <div class="detail-box">
+
+                    <small>
+                        Student Name
+                    </small>
+
+                    <strong id="resultName">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <small>
+                        Roll Number
+                    </small>
+
+                    <strong id="resultRoll">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <small>
+                        Course
+                    </small>
+
+                    <strong id="resultCourse">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <small>
+                        Email
+                    </small>
+
+                    <strong id="resultEmail">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <small>
+                        Phone
+                    </small>
+
+                    <strong id="resultPhone">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <small>
+                        Year
+                    </small>
+
+                    <strong id="resultYear">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- MARKS TABLE -->
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Subject
+                        </th>
+
+                        <th>
+                            Maximum
+                        </th>
+
+                        <th>
+                            Obtained
+                        </th>
+
+                        <th>
+                            Result
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <tr>
+
+                        <td>
+                            HTML
+                        </td>
+
+                        <td>
+                            100
+                        </td>
+
+                        <td id="htmlMarks">
+                            -
+                        </td>
+
+                        <td id="htmlStatus">
+                            -
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            CSS
+                        </td>
+
+                        <td>
+                            100
+                        </td>
+
+                        <td id="cssMarks">
+                            -
+                        </td>
+
+                        <td id="cssStatus">
+                            -
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            JavaScript
+                        </td>
+
+                        <td>
+                            100
+                        </td>
+
+                        <td id="jsMarks">
+                            -
+                        </td>
+
+                        <td id="jsStatus">
+                            -
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+
+            <!-- SUMMARY -->
+
+            <div class="summary">
+
+
+                <div>
+
+                    <h4>
+                        Total Marks
+                    </h4>
+
+                    <p id="totalMarks">
+                        -
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Percentage
+                    </h4>
+
+                    <p id="percentage">
+                        -
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Grade
+                    </h4>
+
+                    <p id="grade">
+                        -
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- BACK BUTTON -->
+
+            <div class="button-container">
+
+                <button
+                    onclick="goBack()"
+                >
+                    Register Another Student
+                </button>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 Student Registration & Result Portal
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+
+        /* GET STORED DATA */
+
+        const storedData =
+            sessionStorage.getItem("studentData");
+
+
+        /* IF NO DATA */
+
+        if (!storedData) {
+
+            alert(
+                "No student data found. Please register first."
+            );
+
+            window.location.href =
+                "index.html";
+
+        }
+
+
+        else {
+
+
+            /* CONVERT JSON TO OBJECT */
+
+            const student =
+                JSON.parse(storedData);
+
+
+            /* DISPLAY STUDENT DETAILS */
+
+            document.getElementById(
+                "resultName"
+            ).textContent =
+                student.name;
+
+
+            document.getElementById(
+                "resultRoll"
+            ).textContent =
+                student.roll;
+
+
+            document.getElementById(
+                "resultCourse"
+            ).textContent =
+                student.course;
+
+
+            document.getElementById(
+                "resultEmail"
+            ).textContent =
+                student.email;
+
+
+            document.getElementById(
+                "resultPhone"
+            ).textContent =
+                student.phone;
+
+
+            document.getElementById(
+                "resultYear"
+            ).textContent =
+                student.year;
+
+
+            /* MARKS */
+
+            document.getElementById(
+                "htmlMarks"
+            ).textContent =
+                student.html;
+
+
+            document.getElementById(
+                "cssMarks"
+            ).textContent =
+                student.css;
+
+
+            document.getElementById(
+                "jsMarks"
+            ).textContent =
+                student.javascript;
+
+
+            /* PASS / FAIL */
+
+            const htmlPass =
+                student.html >= 40;
+
+
+            const cssPass =
+                student.css >= 40;
+
+
+            const jsPass =
+                student.javascript >= 40;
+
+
+            updateStatus(
+                "htmlStatus",
+                htmlPass
+            );
+
+
+            updateStatus(
+                "cssStatus",
+                cssPass
+            );
+
+
+            updateStatus(
+                "jsStatus",
+                jsPass
+            );
+
+
+            /* TOTAL */
+
+            const total =
+                student.html +
+                student.css +
+                student.javascript;
+
+
+            /* PERCENTAGE */
+
+            const percentage =
+                (total / 300) * 100;
+
+
+            /* GRADE */
+
+            let grade;
+
+
+            if (percentage >= 90) {
+
+                grade = "A+";
+
+            }
+
+            else if (percentage >= 80) {
+
+                grade = "A";
+
+            }
+
+            else if (percentage >= 70) {
+
+                grade = "B";
+
+            }
+
+            else if (percentage >= 60) {
+
+                grade = "C";
+
+            }
+
+            else if (percentage >= 50) {
+
+                grade = "D";
+
+            }
+
+            else {
+
+                grade = "F";
+
+            }
+
+
+            /* OVERALL RESULT */
+
+            const overallPass =
+                htmlPass &&
+                cssPass &&
+                jsPass;
+
+
+            const status =
+                document.getElementById(
+                    "resultStatus"
+                );
+
+
+            if (overallPass) {
+
+                status.textContent =
+                    "PASS";
+
+                status.classList.remove(
+                    "fail"
+                );
+
+            }
+
+            else {
+
+                status.textContent =
+                    "FAIL";
+
+                status.classList.add(
+                    "fail"
+                );
+
+            }
+
+
+            /* DISPLAY SUMMARY */
+
+            document.getElementById(
+                "totalMarks"
+            ).textContent =
+                `${total} / 300`;
+
+
+            document.getElementById(
+                "percentage"
+            ).textContent =
+                `${percentage.toFixed(2)}%`;
+
+
+            document.getElementById(
+                "grade"
+            ).textContent =
+                grade;
+
+        }
+
+
+        /* UPDATE SUBJECT STATUS */
+
+        function updateStatus(
+            elementId,
+            passed
+        ) {
+
+            const element =
+                document.getElementById(
+                    elementId
+                );
+
+
+            if (passed) {
+
+                element.textContent =
+                    "Pass";
+
+                element.className =
+                    "pass";
+
+            }
+
+            else {
+
+                element.textContent =
+                    "Fail";
+
+                element.className =
+                    "fail-text";
+
+            }
+
+        }
+
+
+        /* BACK TO REGISTRATION */
+
+        function goBack() {
+
+            window.location.href =
+                "index.html";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
